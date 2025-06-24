@@ -22,11 +22,19 @@ public class Problema1_Libro {
         temas.add("Encuentro");
         componentes1.add(new Lista("Temas principales", temas));
 
+        componentes1.add(new Tabla("Resumen por capítulos", 3, 2));
+
+        ArrayList<String> personajes = new ArrayList<>();
+        personajes.add("Samantha");
+        personajes.add("Marco");
+        personajes.add("La madre");
+        componentes1.add(new Vineta("Personajes importantes", personajes));
+
         ArrayList<Seccion> secciones1 = new ArrayList<>();
         secciones1.add(new Seccion("1.1", componentes1));
 
         ArrayList<Palabra> palabras2 = new ArrayList<>();
-        palabras2.add(new Palabra("Quien"));
+        palabras2.add(new Palabra("¿Quien"));
         palabras2.add(new Palabra("soy"));
         palabras2.add(new Palabra("en"));
         palabras2.add(new Palabra("realidad?"));
@@ -36,7 +44,9 @@ public class Problema1_Libro {
 
         ArrayList<Componente> componentes2 = new ArrayList<>();
         componentes2.add(new Parrafo("Conflicto interno", sentencias2));
-        componentes2.add(new Figura("Figura 2", "Espejo", "Reflejo simbolico del personaje"));
+        componentes2.add(new Figura("Figura 2", "Espejo", "Reflejo simbólico del personaje"));
+        componentes2.add(new Tabla("Relaciones familiares", 2, 3));
+        componentes2.add(new Vineta("Elementos simbólicos", new ArrayList<>(java.util.Arrays.asList("Espejo", "Carta", "Estacion de tren"))));
 
         ArrayList<Seccion> secciones2 = new ArrayList<>();
         secciones2.add(new Seccion("2.1", componentes2));
@@ -179,5 +189,35 @@ class Lista extends Componente {
     @Override
     public String toString() {
         return "Lista{" + "items=" + items + "} " + super.toString();
+    }
+}
+
+class Tabla extends Componente {
+    private int filas;
+    private int columnas;
+
+    public Tabla(String contenido, int filas, int columnas) {
+        super(contenido);
+        this.filas = filas;
+        this.columnas = columnas;
+    }
+
+    @Override
+    public String toString() {
+        return "Tabla{" + "filas=" + filas + ", columnas=" + columnas + "} " + super.toString();
+    }
+}
+
+class Vineta extends Componente {
+    private ArrayList<String> puntos;
+
+    public Vineta(String contenido, ArrayList<String> puntos) {
+        super(contenido);
+        this.puntos = puntos;
+    }
+
+    @Override
+    public String toString() {
+        return "Vineta{" + "puntos=" + puntos + "} " + super.toString();
     }
 }
